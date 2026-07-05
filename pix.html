@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Presenteie os Noivos 💕</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1c1c1c;
+    font-family:Arial,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    width:100%;
+    max-width:650px;
+    background:#ffffff;
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.logo{
+    color:#b59a4a;
+    font-size:34px;
+    font-weight:300;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#777;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.qr-container{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.qr-container img{
+    width:100%;
+    max-width:320px;
+    border:4px solid #b59a4a;
+    border-radius:15px;
+}
+
+.info{
+    background:#faf8f2;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:25px;
+    text-align:left;
+}
+
+.info p{
+    margin:10px 0;
+    color:#444;
+}
+
+.info strong{
+    color:#b59a4a;
+}
+
+.copy-button{
+    width:100%;
+    border:none;
+    background:#b59a4a;
+    color:white;
+    font-size:18px;
+    padding:16px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.copy-button:hover{
+    background:#9e8538;
+}
+
+.footer{
+    margin-top:25px;
+    color:#666;
+    font-size:14px;
+}
+
+@media (max-width:768px){
+
+    .card{
+        padding:20px;
+    }
+
+    .logo{
+        font-size:28px;
+    }
+
+    .copy-button{
+        font-size:16px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="logo">
+        Alessandro & Carine
+    </div>
+
+    <p class="subtitle">
+        Sua presença já é o maior presente.<br>
+        Caso deseje nos presentear, utilize o PIX abaixo.
+    </p>
+
+    <div class="qr-container">
+        <img src="qrCode.png" alt="teste">
+        
+    </div>
+
+    <div class="info">
+        <p><strong>Nome da Titular:</strong> Carine da Mata Moraes</p>
+        <p><strong>Chave PIX:</strong> moraescarine16@gmail.com</p>
+    </div>
+
+    <button class="copy-button" onclick="copiarPix()">
+        📋 Copiar Chave PIX
+    </button>
+
+    <div class="footer">
+         <p>Qualquer valor será muito bem-vindo e nos ajudará a construir novas memórias juntos.</p><br>
+         <p>Obrigado por fazer parte deste momento tão especial ❤️ </p>
+    </div>
+   
+</div>
+
+<script>
+
+function copiarPix(){
+
+    const chavePix = "moraescarine16@gmail.com";
+
+    navigator.clipboard.writeText(chavePix)
+    .then(() => {
+
+        alert(
+            "Código PIX copiado com sucesso 😊\n\n" +
+            "Nome da titular: Carine da Mata Moraes"
+        );
+
+    })
+    .catch(() => {
+
+        alert(
+            "Copie manualmente:\n\n" +
+            chavePix
+        );
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
