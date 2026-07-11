@@ -55,7 +55,8 @@ h2 {
   width:100%;
   height:100%;
   object-fit:contain;
-  transition: transform 0.2s ease;
+  transition: none;
+  /* transition: transform 0.2s ease; */
 }
 
 /* CONTROLES (ESCONDIDOS) ajustes começam aqui:*/ 
@@ -332,30 +333,55 @@ function enableZoom() {
 
 // --------------------
 // PRELOAD
-// --------------------
+// -------------------- 
+
+  /* Retirado o item abaixo por questões de performance, substituido por 
 function preload() {
   $("img").each(function () {
     let i = new Image();
     i.src = this.src;
   });
-}
+} */
 
+function preloadLazy() {
+  const pages = [
+    "page_1.jpg",
+    "page_2.jpg",
+    "page_33.jpg",
+    "page_4.jpg"
+  ];
+  let index = 0;
+  function loadNext() {
+    if (index >= pages.length) return;
+    let img = new Image();
+    img.src = pages[index];
+    index++;
+    img.onload = loadNext;
+  }
+  loadNext();
+}
+  
 // --------------------
 // RELOAD RESPONSIVO
 // --------------------
 function reloadFlipbook() {
   if ($("#flipbook").data("turn")) {
-    $("#flipbook").turn("destroy");
+        $("#flipbook").turn("size", width, height);
   }
-  initFlipbook();
 }
+            /* Ocasionando problemas na transição de imagens, item abaixo retirado
+              $("#flipbook").turn("destroy");
+              }
+              initFlipbook(); */
+
 
 // --------------------
 // INIT
 // --------------------
 $(document).ready(function () {
-
-  preload();
+  
+  //preload(); inserido o preloadLazy() para melhoria na performance
+  preloadLazy();
   initFlipbook();
   enableZoom();
 
